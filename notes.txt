@@ -154,3 +154,22 @@ but  in goor programing practice is to convert the string explicitly using Numbe
 
 strict mode : use strict; -> this line should be the first line in your script to enable strict mode The purpose of "use strict" is to indicate that the code should be executed in "strict mode".With strict mode, you can not, for example, use undeclared variables.another thig strict mode does is to introduce a short list of variable names that are reserved for features that might be added to the language later.in normal JavaScript, mistyping a variable name creates a new global variable. In strict mode, this will throw an error, making it impossible to accidentally create a global variable.In normal JavaScript, a developer will not receive any error feedback assigning values to non-writable properties.
 In strict mode, any assignment to a non-writable property, a getter-only property, a non-existing property, a non-existing variable, or a non-existing object, will throw an error.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Functions:
+
+Function is a piece of code that can be reused several times .
+
+syntax fod defining a function:
+
+function <function_name>(<list of parameters of nothing if no parameters are taken as input>)
+{
+//body of the function
+
+}
+
+syntax for calling a function
+
+<functionName>(values of the parameter decalred in the function or nothing if there is no parameter)
