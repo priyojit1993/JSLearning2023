@@ -1,0 +1,156 @@
+JavaScript is a high level object oriented multi paradigm programing language.
+Role of js in web development:
+    Html: responsible for the content of the web page.
+    css:  responsible for the styling of the web page.
+    js: actual programing language of the internet ,helps developer to add dynamic and interactive web pages , it is also used to manipulate content of css ,load data from the servers. popular js libraries like  react , angular , vue are all based on js.javascript can also run web server , node js is a big example where we use js outside web browser and as backend language to work on web servers.Js can also used to make native mobile and dekstop application with libraries like ract native ,ionic and electron js
+
+    JavaScript releases(Ecma script)
+    mordern js started from major change which was done in 2015 and known  as ES6 
+
+    ...... ES5->ES6(2015)->ES7(2016)->ES8(2017)->ES9(2018)->ES10(2019)->ES11(2020)
+
+
+    As we know that HTML is loaded and executed line by line. So, when the browser encounters a <script> tag, it loads and executes the javascript code on the spot. This may slow down the page rendering speed and thus webpage will take more time to load.
+    Javascript is often used to manipulate DOM and add new functionality to the webpage. If <script> tag is not added at end of the <body> tag, DOM may not be ready by that time, thus preventing javascript to work on it, leading to unknown behaviors.
+    Therefore, we should always add <script> tag at the end of the <body> tag to prevent unknown behaviors and make the webpage load faster.
+
+
+    -----------------------------------------------------------------------------------------------------------------------------
+    Data types:
+    Data types in js are broadly classified into 2 type 
+        a. Object type
+        b. primitive type
+    There are 7 primitive data type in Js:
+        1. Number: Floating point numbers used for decimals and integers -> let a=23; let a=4.5
+        2. String : Sequence of characters used for text decalared in quotes (double or single doesn't matter) -> let s='hello'; let s="hello";
+        3. Boolean : Logical type that can only be true or false, used for decision making -> let isDecimal=true;
+        4. Undefined: Value taken by variable that is not yet defined('empty value') ->  let children;[here childern contains undefined as it is decalared but not defined].
+        5. Null: Also means empt value but used for differenet circumstances than undefined  if you want to indicate the absence of a deal explicitly, always use null instead of undefined to avoid confusion.
+        6. Symbol(ES2015): Value that is unique and cannot be changed.
+        7. BigInt(ES2020): Larger integers that number type can hold.
+
+
+JavaScript has dynamic typing: we dont have to manually define the data type of the value stored in a variable. JS automatically determines the data type.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+let and const are introduced in ES6 and var is old js
+
+let keyword is used to declare variable whose value is subjected to be changed/re-assigned later
+const keyword is used to decalare variable whose value is not changed once assigned.If we try to re-assign variable decalred with const then automatically javascript throws error.
+also we cannot decalre const variable withour initialzing any value , else js will throw error.
+
+var pretty much works similar to how let works.but internally var is different from let keyword ,variable declared by let are only available inside the block where they're defined
+but variable decalred by var are created on global object and the scope available throughout the function in which they're declared.
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- <->  subtraction
++ <-> for number addition and in case of string its concatination
+** <-> power operation( 2**3) == 2^3
+typeOf <-> returns the type of a given value
+= <-> equals assignment operator
++= <-> increment assignment (x+=10   === x=x+10) 
+*= <-> multiply assignment operator (x*=4 === x=x*4)
+++ <-> increment operator
+-- <-> decrement  operator
+
+comparision operator
+
+> -> greater then
+< -> lesser than 
+>= greater then or equal to 
+<= less than or equal to 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+operator precedence
+Check this link for complete operator precedence
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+In js we have a more flexible way of concating string with value of varriable called as template format where the string is enclosed in `(backtick) instead of double or single quotes
+and inside that portion in order to print value of the varriable we have to just encapsulate the variable with ${variiable_name}
+eg: console.log(`Mark's BMI (${markBMI}) is greater then jhon's BMI (${jhonBMI})`
+here  markBMI and jhonBMI are varriable whose values will be used inside the string , we can also use backtick for regular string so its safe to use backtick instead of single or double for using normal or template string format.we can also use backtick to pring multi-line string which in case of quoted string we had to use escape character like \n or \t etc.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Type conversion and type coercion
+
+When we manually convert one data type to another its called type conversion and when JavaScript automatically converts the type behind the scene its called type coercion.
+
+Number(value) -> will convert any valid string to number if the string is not a valid number it will return NaN (Not a number)
+Number("1991") -> 1991(number)
+Number ("jonas")-> NaN
+typeOf(NaN)-> number 
+
+
+String(value)-> converts to string
+
+
+Js does type coercion for us in many ways
+
+console.log("i am " + 23 + "years old"); // here js is automatically converting 23 which is a number to string via + concat operation.
+
+console.log('23' - '10' - 3); //here js will use type coercion from string to number 
+
+console.log('23' + '10' + 3); // but here it will do type coercion from number to string as + will be used as concat operation not arithemetic sum.
+
+console.log('23' * 3); //  here js will convert from string to number 
+
+let n = '1' + 1;// it will result in 11
+n = n - 1;// here n which was string 11 in the above line will be automatically converted to number 11 for - operation 
+console.log(n)// 10
+
+
+
+console.log(2 + 3 + 4 + '5');//95 (2+3+4)=9 this is arithmetic addition but last + with '5 will be string concatination
+console.log('10' - '4' - '3' - 2 + '5')//15 here ('10' - '4' - '3'  -2 )is arithemtic subtraction resulting in 1 and then +'5' is string concatination resulting in 15
+
+
+while adding number to string + will always work as string concat and not arithemetic sum.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+truthy and falsy values
+
+falsy values are values that are not exactly false but will become false when we try to convert them to Boolean
+in js there are 5 falsy values they are:
+    1. 0
+    2. '' (empty string)
+    3. null 
+    4. undefined
+    5. NaN
+    
+evey other value other than the above 5 are truthy value 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+== vs ===
+
+=== is a strict equality opearator it returns true when both the values are exactly the same and does not perform type coercion
+
+18===18 -> true
+18===19 -> false
+18==='18' -> false // don't perform coercion
+
+== loose equality operator and perform type coercion 
+'18'==18 -> true // performs type coercion
+
+
+== operator is useful when you need explicit type converstion for example you are a number as input from a textbox and want to check the number then == will perform type coercion and then perform check 
+but  in goor programing practice is to convert the string explicitly using Number() function and then check with === operator.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+strict mode : use strict; -> this line should be the first line in your script to enable strict mode The purpose of "use strict" is to indicate that the code should be executed in "strict mode".With strict mode, you can not, for example, use undeclared variables.another thig strict mode does is to introduce a short list of variable names that are reserved for features that might be added to the language later.in normal JavaScript, mistyping a variable name creates a new global variable. In strict mode, this will throw an error, making it impossible to accidentally create a global variable.In normal JavaScript, a developer will not receive any error feedback assigning values to non-writable properties.
+In strict mode, any assignment to a non-writable property, a getter-only property, a non-existing property, a non-existing variable, or a non-existing object, will throw an error.
