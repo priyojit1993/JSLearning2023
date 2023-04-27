@@ -357,5 +357,28 @@ do {
 break and continue statement are same as java.
 
 
+Dom manipulation using javascript
+
+Dom: Document object model which is a structured representation of html documents.Allows javascript to access html elements and styles to manipulate them.connecting point between html elements and javascript code.Dom is automatically created by the browser as soon as the html page loads in a tree structure, in that tree strucutre evrey node is an html object arranged in hierarchy of the html objects.
+
+document is the root of the tree and it is followed by child node named html as <html></html> is the root most tag of a html page
+
+
+eg: 
+        document:
+            element(<html>)
+                element(<head>)
+                    element(<title>)
+                        element(<text>)
+                element(<body>)
+                    element(<section>)
+                        element(<p>)
+                            element(<text>)
+                            element(<a>)
+                                element(<link>)
+                    element(<section>)
+
+
+Dom is not part of javascript,dom and dom methods are part of web API which are libraries that browser implements which we can access from JavaScript code.Beside DOM there tons of other API like fetch api , time api etc.
 
 
