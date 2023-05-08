@@ -631,6 +631,20 @@ Lewandowski: 2
 
 //maps
 {
+  const openingHours = {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  };
   //like objects data in maps are stored in key,value pairs ,but the big difference between objects and maps are , in objects the keys are basically always string and in maps keys can be of any type.
   // we use the new keyword to create a map
   const resturantMap = new Map();
@@ -669,4 +683,122 @@ Lewandowski: 2
   console.log(resturantMap.get(arr)); //hi ,also since the key here is an object refference so if we change the or add elements to the array the key will change as the key is not holding the array but a reffeence to the array object.
 
   //map iteration
+  //we can define map and intialize it on the spot as an array of array , where each innner array is an entry having 2 elements key and value
+  const question = new Map([
+    ['question', 'what is the best programming language in the world'],
+    [1, 'Java'],
+    [2, 'C++'],
+    [3, 'JavaScript'],
+    ['correct', 3],
+    [true, 'correct🥳'],
+    [false, 'Try Again!!'],
+  ]);
+  //we can also create a map from using Object.entries() on a given object
+  console.log(Object.entries(openingHours));
+  const map3 = new Map(Object.entries(openingHours)); //the inner object.entires will convert the object into key value entries which will be used to create the map
+  console.log(map3);
+  console.log(question.get('question'));
+  //as map is already list of entries so we can directly use for of loop in the map as Object.entries() for of loop in object shown below
+  for (const [key, value] of question) {
+    if (typeof key === 'number') {
+      console.log(`Anwer is ${key}:${value}`);
+    }
+  }
+  const ans = 3;
+  console.log(question.get(question.get('correct') === ans));
+  //convert map into array of arrays , if we use spread operator on a map then the result will be an array of arrays as shown below.
+  const arrQuestion = [...question];
+  console.log(arrQuestion);
+  //map also has 3 inbuild methods .entries() which give the entries of the map,.keys()  gives key of map and .values() give values array but all of these gives a mapIterator as output we have to spread the result and store in an array in order to use it.
+  console.log([...question.entries()]);
+  console.log([...question.keys()]);
+  console.log([...question.values()]);
+}
+
+//coding challange 3
+{
+  /*
+  
+  Let's continue with our football betting app! This time, we have a map called
+'gameEvents' (see below) with a log of the events that happened during the
+game. The values are the events themselves, and the keys are the minutes in which
+each event happened (a football game has 90 minutes plus some extra time).
+Your tasks:
+1. Create an array 'events' of the different game events that happened (no
+duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64
+was unfair. So remove this event from the game events log.
+3. Compute and log the following string to the console: "An event happened, on
+average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over 'gameEvents' and log each element to the console, marking
+whether it's in the first half or second half (after 45 min) of the game, like this:
+[FIRST HALF] 17: ⚽ GOAL
+  
+  */
+
+  const gameEvents = new Map([
+    [17, '⚽ GOAL'],
+    [36, '� Substitution'],
+    [47, '⚽ GOAL'],
+    [61, '� Substitution'],
+    [64, '� Yellow card'],
+    [69, '� Red card'],
+    [70, '� Substitution'],
+    [72, '� Substitution'],
+    [76, '⚽ GOAL'],
+    [80, '⚽ GOAL'],
+    [92, '� Yellow card'],
+  ]);
+  //1.
+  const events = [...new Set(gameEvents.values())];
+  console.log(events);
+  //2.
+  gameEvents.delete(64);
+
+  //3.
+  const time = [...gameEvents.keys()].pop();
+  console.log(`An event happened, on
+  average, every ${time / gameEvents.size} minutes`);
+  //4.
+  for (const [key, value] of gameEvents) {
+    let half = key <= 45 ? `[First Half]` : `[Seccond Half]`;
+    console.log(`${half} ${key}: ${value}`);
+  }
+}
+
+//working with strings
+//like in java strings in javascript is also immutable.
+{
+  const airLine = `Air Asia`;
+  const plane = `A320`;
+
+  //As String is stored as an array of character
+  console.log(plane[0]);
+  console.log(plane[1]);
+
+  //get length of string
+  console.log(airLine.length);
+  //string methods
+
+  //Returns the position of the first occurrence of a substring. takes 2 parameter @param searchString The substring to search for in the string,@param position The index at which to begin searching the String object. If omitted, search starts at the beginning of the string.
+  console.log(airLine.indexOf('r'));
+  //Returns the last occurrence of a substring in the string.
+  console.log(airLine.lastIndexOf('a'));
+  // we can also search for entire words
+  console.log(airLine.indexOf('Air')); //0
+  //but its case sensitive
+  console.log(airLine.indexOf('air')); //-1 not found
+
+  /**
+   * Returns a section of a string (substring).
+   * @param start The index to the beginning of the specified portion of stringObj.
+   * @param end The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end.
+   * If this value is not specified, the substring continues to the end of stringObj.
+   */
+  console.log(airLine.slice(2));
+  console.log(airLine.slice(3, 6));
+  console.log(airLine.slice(0, airLine.indexOf(' ')));
+  //providing negative value to slice will result in slice from the end of the array..
+  console.log(airLine.slice(-2));
+  console.log(airLine.slice(1, -2));
 }

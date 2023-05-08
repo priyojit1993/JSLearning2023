@@ -999,7 +999,100 @@ Optional chaining(?.)
 
 
   Maps:
+  const openingHours = {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  };
+  //like objects data in maps are stored in key,value pairs ,but the big difference between objects and maps are , in objects the keys are basically always string and in maps keys can be of any type.
+  // we use the new keyword to create a map
+  const resturantMap = new Map();
+  //we use the set keyword to add new key,value pair in map and returns the map
+  resturantMap.set('name', 'classico Italiano'); //Adds a new element with a specified key and value to the Map. If an element with the same key already exists, the element will be updated.
+  resturantMap.set(1, 'Frenze, Italy');
+  resturantMap.set(2, 'Lisbon, Portugal');
+  //since set method of map returns the mao we can use that  for chaining set methods
+  console.log(
+    resturantMap
+      .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+      .set('starterMenu', [
+        'Focaccia',
+        'Bruschetta',
+        'Garlic Bread',
+        'Caprese Salad',
+      ])
+  );
 
+  //to retrive value from set we use the get(<key_name>) method to get value for given key
+  /*
+  Returns a specified element from the Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map.
+     * @returns Returns the element associated with the specified key. If no element is associated with the specified key, undefined is returned
+   */
+  console.log(resturantMap.get('starterMenu'));
+  //to check if an element is present we use has()
+  console.log(resturantMap.has(1)); // boolean indicating whether an element with the specified key exists or not.
+  //resturantMap.clear(); // to clear the map
+  //resturantMap.delete(1); // delete the key value pair for the given key
+  //if we use object as key then first we should store that object and use the same refference otherwise it will create dumb entires as shown below
+  resturantMap.set([1, 2], 'hello');
+  console.log(resturantMap.get([1, 2])); //undefiend although we are passing same array in set and get method but inernally those arrays are 2 different object and hence not the same
+
+  const arr = [3, 4];
+  resturantMap.set(arr, 'hi');
+  console.log(resturantMap.get(arr)); //hi ,also since the key here is an object refference so if we change the or add elements to the array the key will change as the key is not holding the array but a reffeence to the array object.
+
+  //map iteration
+  //we can define map and intialize it on the spot as an array of array , where each innner array is an entry having 2 elements key and value
+  const question = new Map([
+    ['question', 'what is the best programming language in the world'],
+    [1, 'Java'],
+    [2, 'C++'],
+    [3, 'JavaScript'],
+    ['correct', 3],
+    [true, 'correct🥳'],
+    [false, 'Try Again!!'],
+  ]);
+  //we can also create a map from using Object.entries() on a given object
+  console.log(Object.entries(openingHours));
+  const map3 = new Map(Object.entries(openingHours)); //the inner object.entires will convert the object into key value entries which will be used to create the map
+  console.log(map3);
+  console.log(question.get('question'));
+  //as map is already list of entries so we can directly use for of loop in the map as Object.entries() for of loop in object shown below
+  for (const [key, value] of question) {
+    if (typeof key === 'number') {
+      console.log(`Anwer is ${key}:${value}`);
+    }
+  }
+  const ans = Number(prompt('Enter your answer'));
+  console.log(question.get(question.get('correct') === ans));
+  //convert map into array of arrays , if we use spread operator on a map then the result will be an array of arrays as shown below.
+  const arrQuestion = [...question];
+  console.log(arrQuestion);
+  //map also has 3 inbuild methods .entries() which give the entries of the map,.keys()  gives key of map and .values() give values array but all of these gives a mapIterator as output we have to spread the result and store in an array in order to use it.
+  console.log([...question.entries()]);
+  console.log([...question.keys()]);
+  console.log([...question.values()]);
+
+
+  Selecting Data structres based on problem:
+  There are 3 sources of data
+  1. From the program itself: Data written directly in source code eg: status_code constant ,etc.
+  2. From the UI: Data input from the user or written in DOM.
+  3. From external soruces: Data comming from WEB API's.
+
+  If the data is liner (not key value pair) then we can use either arrays or sets and if the data is in form of any key value pair we can use either objects or maps.
+
+  Other build in ds of js are weakMap and weakSet 
+  and non build in ds in js but we use are stack,queue,linkedList,hashTable,Trees.
   
 
 
