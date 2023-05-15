@@ -801,4 +801,149 @@ whether it's in the first half or second half (after 45 min) of the game, like t
   //providing negative value to slice will result in slice from the end of the array..
   console.log(airLine.slice(-2));
   console.log(airLine.slice(1, -2));
+  const checkMiddleSeat = function (seat) {
+    //B and E are middle seat
+    // const lastCharacter = seat[seat.length - 1];
+    const lastCharacter = seat.slice(-1);
+    lastCharacter === 'E' || lastCharacter === 'B'
+      ? console.log(`${seat} is middle seat`)
+      : console.log(`${seat} is not middle seat`);
+  };
+  checkMiddleSeat('11B');
+  checkMiddleSeat('23C');
+  checkMiddleSeat('3E');
+  //wheneve we call a method on string primitive js automatically behind the scene converts it into object String(Auto Boxing) new String('jonas')
+  /** Converts all the alphabetic characters in a string to uppercase. */
+  console.log(airLine.toUpperCase());
+  /** Converts all the alphabetic characters in a string to lowercase. */
+  console.log(airLine.toLowerCase());
+  //comparing emails
+  const email1 = `hello@jonas.io`;
+  const email2 = ' Hello@Jonas.io \n';
+  /** Removes the leading and trailing white space and line terminator characters from a string. */
+  console.log(email1.trim().toLowerCase() === email2.trim().toLowerCase());
+  //replacing
+  const priceGB = '288,97£';
+  /**
+   * Finds the first substring match in a regular expression search.
+   * @param regexp The regular expression pattern and applicable flags.
+   */
+  const priceUS = priceGB.replace('£', '$').replace(',', '.'); //only replace first occurance
+  console.log(priceUS);
+  //new method introduced in ES2023
+  console.log(
+    'All passengers please come to boarding door 23 , boarding door 23!!'.replaceAll(
+      'door',
+      'gate'
+    )
+  ); //insted of replaceAll we can use regular expressions.
+  const plane2 = 'Airbus A320neo';
+  /**
+   * Returns true if searchString appears as a substring of the result of converting this
+   * object to a String, at one or more positions that are
+   * greater than or equal to position; otherwise, returns false.
+   * @param searchString search string
+   * @param position If position is undefined, 0 is assumed, so as to search all of the String.**/
+  console.log(plane2.includes('A320'));
+  /**
+   * Returns true if the sequence of elements of searchString converted to a String is the
+   * same as the corresponding elements of this object (converted to a String) starting at
+   * position. Otherwise returns false.
+   */
+  console.log(plane2.startsWith('Air'));
+  /**
+   * Returns true if the sequence of elements of searchString converted to a String is the
+   * same as the corresponding elements of this object (converted to a String) starting at
+   * endPosition – length(this). Otherwise returns false.
+   */
+  console.log(plane2.endsWith('neo'));
+
+  /**
+   * Split a string into substrings using the specified separator and return them as an array.
+   * @param separator A string that identifies character or characters to use in separating the string. If omitted, a single-element array containing the entire string is returned.
+   * @param limit A value used to limit the number of elements returned in the array.
+   */
+  console.log('Hello world , How are You, I am fine'.split(',')); //['Hello world ', ' How are You', ' I am fine']
+
+  //padding
+  const msg = 'Go to gate 23!!';
+  /**
+   * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length.
+   * The padding is applied from the start (left) of the current string.
+   *
+   * @param maxLength The length of the resulting string once the current string has been padded.
+   *        If this parameter is smaller than the current string's length, the current string will be returned as it is.
+   *
+   * @param fillString The string to pad the current string with.
+   *        If this string is too long, it will be truncated and the left-most part will be applied.
+   *        The default value for this parameter is " " (U+0020).
+   */
+  console.log(msg.padStart(25, '+')); //++++++++++Go to gate 23!! (added repating '+' in the begining of string to make the final length 25)
+  /**
+   * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length.
+   * The padding is applied from the end (right) of the current string.
+   *
+   * @param maxLength The length of the resulting string once the current string has been padded.
+   *        If this parameter is smaller than the current string's length, the current string will be returned as it is.
+   *
+   * @param fillString The string to pad the current string with.
+   *        If this string is too long, it will be truncated and the left-most part will be applied.
+   *        The default value for this parameter is " " (U+0020).
+   */
+  console.log(msg.padEnd(25, '+')); //Go to gate 23!!++++++++++ (added repating '+' in the end of string  to make the final length 25)
+}
+//coding challange 4
+{
+  /**
+   Write a program that receives a list of variable names written in underscore_case
+and convert them to camelCase.
+The input will come from a textarea inserted into the DOM (see code below to
+insert the elements), and conversion will happen when the button is pressed.
+Test data (pasted to textarea, including spaces):
+underscore_case
+first_name
+Some_Variable
+calculate_AGE
+delayed_departure
+Should produce this output (5 separate console.log outputs):
+underscoreCase ✅
+firstName ✅✅
+someVariable ✅✅✅
+calculateAge ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+   */
+
+  const convert = function (s) {
+    const words = s.split('\n');
+    for (const word of words) {
+      camelCaseConvertFunction(word);
+      // console.log('\n');
+    }
+  };
+
+  const camelCaseConvertFunction = function (s) {
+    let s1 = '';
+    if (s.includes('_')) {
+      const wordArray = s.split('_');
+      for (const [index, word] of Object.entries(wordArray)) {
+        if (Number(index) === 0) {
+          s1 =
+            s1 + word.slice(0, 1).toLowerCase() + word.slice(1).toLowerCase();
+        } else {
+          s1 =
+            s1 + word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase();
+        }
+      }
+      console.log(s1);
+    } else {
+      console.log(s);
+    }
+  };
+  convert(`underscore_case
+  first_name
+  Some_Variable
+  calculate_AGE
+  delayed_departure`);
+  //  camelCaseConvertFunction(`underscore_case`);
+  //camelCaseConvertFunction(`Some_Variable`);
 }
