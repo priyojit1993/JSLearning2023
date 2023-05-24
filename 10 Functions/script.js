@@ -15,7 +15,7 @@
     // price ||= 199;
 
     const booking = {
-      flightNumber, // similar to writing flightNumber:flightNumber here js will automatically create aporperty with the variable name and add its value as value.
+      flightNumber, // similar to writing flightNumber:flightNumber here js will automatiindy create aporperty with the variable name and add its value as value.
       numPassenger,
       price,
     };

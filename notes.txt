@@ -1219,3 +1219,18 @@ const airLine = `Air Asia`;
    */
   console.log(msg.padEnd(25, '+')); //Go to gate 23!!++++++++++ (added repating '+' in the end of string  to make the final length 25)
   
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  oops:
+  In classical Object oriented programing we have classes and then objects are created from classes.
+
+  In javascript we have prototype ,all objects in js are linked to certain prototype object,the protoype object has methods and properties that all the objects that are linked to that prototype can access and use.This behavior is called prototypal inheritence this is different from classical parent child inheritence.This mechanism is also called deligation because object delegates to the protoype 
+
+  for example the map method on arrays is actually looks like Array.prototype.map() where Array.prototype is the prototype of all array object we create in js.
+
+  There are 3 different way of creating prototype:
+
+  1. constructor Function: Technique to create objects from function,This is how build in objects like Arrays , Maps etc are actually implemented.
+  2. Es6 classes: 
+  3. Object.create():
+
